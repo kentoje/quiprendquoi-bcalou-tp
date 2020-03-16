@@ -6,3 +6,20 @@ h3 Créé par #{party.author}
 
 label(for="url") Partagez l'événement
 input(id="url" value=`${url}`)
+
+form(method="post" action=`/party/${party._id}/items`)
+    div
+        label(for="name") Ajouter un item à l'évènement
+        input(name="name" id="name" required minlength="3" placeholder="Topinambour")
+        label(for="user") Nom de l'auteur
+        input(name="user" id="user" required minlength="3" placeholder="John Doe")
+    button(type="submit") Ajouter
+
+ul
+    each item in party.items
+        li
+            span= item.name
+            br
+            span= item.user
+            form(method="post" action=`/party/${party._id}/items/${item._id}?_method=DELETE`)
+                button(type="submit") Supprimer cet item
