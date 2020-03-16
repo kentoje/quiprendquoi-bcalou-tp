@@ -21,11 +21,10 @@ app.get('/party/:id', async (req, res) => {
   try {
     const data = await fetch(`${process.env.API_URL}/party/${req.params.id}`);
     const response = await data.json();
-    const result = await response;
-    const { name } = result
+    const { name } = response;
 
     res.render('party', {
-      party: result,
+      party: response,
       title: name,
     });
   } catch (error) {
