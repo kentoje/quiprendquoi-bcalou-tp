@@ -5,6 +5,6 @@ form(method="post" action="/party")
         input(name="name" id="name" required minlength="3" placeholder="Nouvel an")
         label(for="author") Nom de l'auteur
         input(name="author" id="author" required minlength="3" placeholder="John Doe")
-        //label(for="party") Date de l'évènement
-        //input(name="party" id="party" required minlength="3" placeholder="16/03/2020")
+        label(for="date") Date de l'évènement
+        input(name="date" id="date" minlength="3" placeholder="16/03/2020")
     button(type="submit") Créer
