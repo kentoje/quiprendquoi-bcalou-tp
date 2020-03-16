@@ -17,6 +17,12 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/party/:id', (req, res) => {
+  res.render('party', {
+    title: 'Évènements',
+  });
+});
+
 app.post('/party', async (req, res) => {
   try {
     const data = await fetch(`${process.env.API_URL}/party`, {
