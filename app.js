@@ -28,7 +28,7 @@ app.get('/party/:id', async (req, res) => {
       title: name,
     });
   } catch (error) {
-    console.error(error.message)
+    res.send(error)
   }
 });
 
@@ -43,10 +43,10 @@ app.post('/party', async (req, res) => {
       body: JSON.stringify(req.body)
     });
 
-    const result = await data.json();
-    console.log(result)
+    const { _id } = await data.json();
+    res.redirect(`/party/${_id}`);
   } catch (error) {
-    console.error(error.message)
+    res.send(error)
   }
 });
 
