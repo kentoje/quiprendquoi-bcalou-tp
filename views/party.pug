@@ -1,4 +1,4 @@
-include ../partials/header.pug
+include ../partials/header
 
 h1 Qui prend quoi ?
 h2= party.name
@@ -15,11 +15,4 @@ form(method="post" action=`/party/${party._id}/items`)
         input(name="user" id="user" required minlength="3" placeholder="John Doe")
     button(type="submit") Ajouter
 
-ul
-    each item in party.items
-        li
-            span= item.name
-            br
-            span= item.user
-            form(method="post" action=`/party/${party._id}/items/${item._id}?_method=DELETE`)
-                button(type="submit") Supprimer cet item
+include ./items

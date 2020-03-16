@@ -85,4 +85,23 @@ app.delete('/party/:id/items/:itemId', async (req, res) => {
   }
 });
 
+app.patch('/party/:id/items/:itemId', async (req, res) => {
+  const { id, itemId } = req.params
+
+  try {
+    const data = await fetch(`${process.env.API_URL}/party/${id}/items/${itemId}`, {
+      method: 'PATCH',
+      headers: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(req.body)
+    });
+    await data.json();
+    res.redirect('back');
+  } catch (error) {
+    res.send(error)
+  }
+})
+
 app.listen(port, _ => console.log(`Front app listening on port ${port}! At http://localhost:${port}`));

@@ -1,0 +1,18 @@
+ul
+    each item in party.items
+        li
+            span= item.name
+            br
+            span= item.user
+            form(method="post" action=`/party/${party._id}/items/${item._id}?_method=DELETE`)
+                button(type="submit") Supprimer cet item
+            form(method="post" action=`/party/${party._id}/items/${item._id}?_method=PATCH`)
+                label(for="name") Nom de l'item
+                br
+                input(name="name" id="name" minlength="3" placeholder="Carotte")
+                br
+                label(for="user") Nom de l'auteur
+                br
+                input(name="user" id="user" minlength="3" placeholder="John Doe")
+                br
+                button(type="submit") Modifier l'item
