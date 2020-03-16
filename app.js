@@ -17,10 +17,20 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/party/:id', (req, res) => {
-  res.render('party', {
-    title: 'Évènements',
-  });
+app.get('/party/:id', async (req, res) => {
+  try {
+    const data = await fetch(`${process.env.API_URL}/party/${req.params.id}`);
+    const response = await data.json();
+    const result = await response;
+    const { name } = result
+
+    res.render('party', {
+      party: result,
+      title: name,
+    });
+  } catch (error) {
+    console.error(error.message)
+  }
 });
 
 app.post('/party', async (req, res) => {
