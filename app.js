@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const fetch = require("node-fetch");
 const app = express();
 const port = process.env.PORT;
 
@@ -16,8 +17,22 @@ app.get('/', (req, res) => {
   });
 });
 
-app.post('/party', (req, res) => {
-  res.send('POST ok');
+app.post('/party', async (req, res) => {
+  try {
+    const data = await fetch(`${process.env.API_URL}/party`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(req.body)
+    });
+
+    const result = await data.json();
+    console.log(result)
+  } catch (error) {
+    console.error(error.message)
+  }
 });
 
 app.listen(port, _ => console.log(`Front app listening on port ${port}! At http://localhost:${port}`));
