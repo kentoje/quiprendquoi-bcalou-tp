@@ -12,4 +12,8 @@ app.get('/', (req, res) => {
   });
 });
 
+app.post('/party', (req, res) => {
+  res.send('POST ok');
+});
+
 app.listen(port, _ => console.log(`Front app listening on port ${port}! At http://localhost:${port}`));
