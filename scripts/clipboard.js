@@ -1,4 +1,5 @@
 /**
+ * Append a copy button on dedicated elements.
  * @param {String} data - Data attribute of an element.
  */
 const appendCopyButton = data => {
@@ -12,6 +13,7 @@ const appendCopyButton = data => {
 }
 
 /**
+ * Allow to copy some text while clicking on an element.
  * @param {HTMLElement} element - Element to interact with.
  * @param {String} parentClass - Class of parent element.
  */
