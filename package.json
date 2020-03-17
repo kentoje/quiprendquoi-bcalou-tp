@@ -6,7 +6,7 @@
   "scripts": {
     "start": "concurrently --kill-others \"npm run sass\" \"nodemon app.js\" \"npm run watchify\"",
     "sass": "node-sass styles/style.scss public/style.css -w --output-style compressed",
-    "watchify": "watchify scripts/test.js -o public/script.js"
+    "watchify": "watchify scripts/*.js -o public/script.js"
   },
   "keywords": [],
   "author": "",
