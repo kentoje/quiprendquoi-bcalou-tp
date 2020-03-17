@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 require('dotenv').config();
-require('./startup/style')(app);
+require('./startup/static')(app);
 require('./startup/view')(app);
 require('./startup/request')(app);
 require('./startup/routes')(app);
