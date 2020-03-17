@@ -6,7 +6,7 @@
   "scripts": {
     "start": "concurrently --kill-others \"npm run sass\" \"nodemon app.js\" \"npm run watchify\"",
     "sass": "node-sass styles/style.scss public/style.css -w --output-style compressed",
-    "watchify": "watchify scripts/*.js -o public/script.js"
+    "watchify": "watchify scripts/*.js -o public/script.js -t [ babelify --presets [ @babel/preset-env ] ]"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +20,9 @@
     "pug": "^2.0.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "babelify": "^10.0.0",
     "concurrently": "^5.1.0",
     "node-sass": "^4.13.1",
     "nodemon": "^2.0.2",
