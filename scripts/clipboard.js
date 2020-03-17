@@ -4,9 +4,9 @@
  */
 const appendCopyButton = data => {
   const clipboards = document.querySelectorAll(data);
+  const button = document.createElement('button');
+  button.innerHTML = 'Copier';
   clipboards.forEach(clipboard => {
-    const button = document.createElement('button');
-    button.innerHTML = 'Copier';
     clipboard.parentNode.append(button);
     copyOnClick(button, 'share')
   })

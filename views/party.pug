@@ -7,7 +7,12 @@ h3 Date prévue : #{party.date.slice(0, 10)}
 
 div.share
     label(for="url") Partager l'événement
-    input(id="url" value=`${url}` data-clipboard=`${url}`)
+    input(id="url"
+          value=`${url}`
+          data-clipboard=`${url}`
+          data-share-url=`${url}`
+          data-share-title=`${party.name}`
+          data-share-text=`${party.author} vous invite à rejoindre l'évènement ${party.name}`)
 
 form(method="post" action=`/party/${party._id}?_method=DELETE`)
     span Supprimer l'évènement
