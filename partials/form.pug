@@ -1,15 +1,10 @@
 h2 Créer un événement
-form(method="post" action="/party")
-    div
+form(method="post" action="/party").party
+    div.party__fields
         label(for="name") Nom de l'événement
-        br
         input(name="name" id="name" type="text" required minlength="3" placeholder="Nouvel an")
-        br
         label(for="author") Nom de l'auteur
-        br
         input(name="author" id="author" type="text" required minlength="3" placeholder="John Doe")
-        br
         label(for="date") Date de l'évènement
-        br
         input(name="date" id="date" type="date")
     button(type="submit") Créer
