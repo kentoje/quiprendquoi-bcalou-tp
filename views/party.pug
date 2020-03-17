@@ -3,6 +3,7 @@ include ../partials/header
 h1 Qui prend quoi ?
 h2= party.name
 h3 Créé par #{party.author}
+h3 Date prévue : #{party.date.slice(0, 10)}
 
 label(for="url") Partager l'événement
 input(id="url" value=`${url}`)
@@ -14,27 +15,27 @@ form(method="post" action=`/party/${party._id}?_method=DELETE`)
 form(method="post" action=`/party/${party._id}?_method=PATCH`)
     label(for="name") Modifier le nom de l'évènement
     br
-    input(name="name" id="name" minlength="3" placeholder="Noël" value=`${party.name}`)
+    input(name="name" id="name" type="text" minlength="3" placeholder="Noël" value=`${party.name}`)
     br
     label(for="author") Nom de l'auteur
     br
-    input(name="author" id="author" minlength="3" placeholder="John Doe" value=`${party.author}`)
+    input(name="author" id="author" type="text" minlength="3" placeholder="John Doe" value=`${party.author}`)
     br
     label(for="date") Modifier la date de l'évènement
     br
-    input(name="date" id="date" minlength="3" placeholder="2021-04-16" value=`${party.date}`)
+    input(name="date" id="date" type="date" value=`${party.date.slice(0, 10)}`)
     br
-    button(type="submit") Modifier l'item
+    button(type="submit") Modifier l'évènement
 
 form(method="post" action=`/party/${party._id}/items`)
     div
-        label(for="name") Ajouter un item à l'évènement
+        label(for="itemName") Ajouter un item à l'évènement
         br
-        input(name="name" id="itemName" required minlength="3" placeholder="Topinambour")
+        input(name="name" id="itemName" type="text" required minlength="3" placeholder="Topinambour")
         br
         label(for="user") Nom de l'auteur
         br
-        input(name="user" id="user" required minlength="3" placeholder="John Doe")
+        input(name="user" id="user" type="text" required minlength="3" placeholder="John Doe")
     button(type="submit") Ajouter
 
 include ./items
