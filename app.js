@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 
-app.use(express.static('public'));
 require('dotenv').config();
+require('./startup/style')(app);
 require('./startup/view')(app);
 require('./startup/request')(app);
 require('./startup/routes')(app);
