@@ -5,8 +5,9 @@ h2= party.name
 h3 Créé par #{party.author}
 h3 Date prévue : #{party.date.slice(0, 10)}
 
-label(for="url") Partager l'événement
-input(id="url" value=`${url}`)
+div.share
+    label(for="url") Partager l'événement
+    input(id="url" value=`${url}` data-clipboard=`${url}`)
 
 form(method="post" action=`/party/${party._id}?_method=DELETE`)
     span Supprimer l'évènement
