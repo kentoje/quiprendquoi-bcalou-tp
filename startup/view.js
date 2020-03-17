@@ -1,3 +1,3 @@
-module.exports = (app) => {
+module.exports = app => {
   app.set('view engine', 'pug');
 }
