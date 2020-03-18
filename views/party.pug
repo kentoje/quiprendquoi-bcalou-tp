@@ -45,3 +45,6 @@ form(method="post" action=`/party/${party._id}/items`)
     button(type="submit") Ajouter
 
 include ./items
+
+script.
+  party = !{JSON.stringify(party)}
