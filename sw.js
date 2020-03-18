@@ -33,5 +33,15 @@ addEventListener('fetch', event => {
           }
         })
     );
+  } else {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          const copy = response.clone();
+          caches.open('static').then(cache => cache.put(event.request, copy));
+          return response;
+        })
+        .catch(_ => caches.match(event.request)),
+    );
   }
 });
