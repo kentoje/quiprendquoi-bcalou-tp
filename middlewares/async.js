@@ -4,7 +4,7 @@ module.exports = asyncMiddleware = handler => (
       await handler(req, res);
     } catch (error) {
       next(error);
-      res.send('Something went wrong');
+      // res.send('Something went wrong');
     }
   }
 );
