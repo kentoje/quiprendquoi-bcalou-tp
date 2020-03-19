@@ -24,6 +24,7 @@ if (location.pathname.match(/party/)) {
   const time = 10000;
   const itemEl = document.querySelector('.items');
   let itemCount = document.querySelectorAll('.items li').length;
+  let active = false;
 
   setInterval(_ => {
     fetch(`${api}/${route}/${id}`)
@@ -67,5 +68,10 @@ if (location.pathname.match(/party/)) {
       });
   }, time);
 
-  ('Notification' in window) ? askForPermission() : console.warn('Notifications not supported...');
+  document.body.addEventListener('click', _ => {
+    if (!active) {
+      ('Notification' in window) ? askForPermission() : console.warn('Notifications not supported...');
+      active = true;
+    }
+  });
 }
