@@ -1,51 +1,46 @@
 include ../partials/header
 include ../partials/payment
+div.result
+    div.result__event
+        h1 Qui prend quoi ?
+        h2= party.name
+        h3 Créé par #{party.author}
+        h3 Date prévue : #{party.date.slice(0, 10)}
 
-h1 Qui prend quoi ?
-h2= party.name
-h3 Créé par #{party.author}
-h3 Date prévue : #{party.date.slice(0, 10)}
+    div.share.result__share
+        label(for="url") Partager l'événement
+        input(id="url"
+              value=`${url}`
+              data-clipboard=`${url}`
+              data-share-url=`${url}`
+              data-share-title=`${party.name}`
+              data-share-text=`${party.author} vous invite à rejoindre l'évènement ${party.name}`)
 
-div.share
-    label(for="url") Partager l'événement
-    input(id="url"
-          value=`${url}`
-          data-clipboard=`${url}`
-          data-share-url=`${url}`
-          data-share-title=`${party.name}`
-          data-share-text=`${party.author} vous invite à rejoindre l'évènement ${party.name}`)
+    form(method="post" action=`/party/${party._id}?_method=DELETE` class="result__delete")
+        span Supprimer l'évènement
+        button(type="submit") Supprimer cet évènement
+    form(method="post" action=`/party/${party._id}?_method=PATCH` class="result__edit")
+        div
+            label(for="name") Modifier le nom de l'évènement
+            input(name="name" id="name" type="text" minlength="3" placeholder="Noël" value=`${party.name}`)
+        div
+            label(for="author") Nom de l'auteur
+            input(name="author" id="author" type="text" minlength="3" placeholder="John Doe" value=`${party.author}`)
+        div
+            label(for="date") Modifier la date de l'évènement
+            input(name="date" id="date" type="date" value=`${party.date.slice(0, 10)}`)
+        button(type="submit") Modifier l'évènement
 
-form(method="post" action=`/party/${party._id}?_method=DELETE`)
-    span Supprimer l'évènement
-    br
-    button(type="submit") Supprimer cet évènement
-form(method="post" action=`/party/${party._id}?_method=PATCH`)
-    label(for="name") Modifier le nom de l'évènement
-    br
-    input(name="name" id="name" type="text" minlength="3" placeholder="Noël" value=`${party.name}`)
-    br
-    label(for="author") Nom de l'auteur
-    br
-    input(name="author" id="author" type="text" minlength="3" placeholder="John Doe" value=`${party.author}`)
-    br
-    label(for="date") Modifier la date de l'évènement
-    br
-    input(name="date" id="date" type="date" value=`${party.date.slice(0, 10)}`)
-    br
-    button(type="submit") Modifier l'évènement
+    form(method="post" action=`/party/${party._id}/items` class="result__items")
+        div
+            label(for="itemName") Ajouter un item à l'évènement
+            input(name="name" id="itemName" type="text" required minlength="3" placeholder="Topinambour")
+        div
+            label(for="user") Nom de l'auteur
+            input(name="user" id="user" type="text" required minlength="3" placeholder="John Doe")
+        button(type="submit") Ajouter
 
-form(method="post" action=`/party/${party._id}/items`)
-    div
-        label(for="itemName") Ajouter un item à l'évènement
-        br
-        input(name="name" id="itemName" type="text" required minlength="3" placeholder="Topinambour")
-        br
-        label(for="user") Nom de l'auteur
-        br
-        input(name="user" id="user" type="text" required minlength="3" placeholder="John Doe")
-    button(type="submit") Ajouter
-
-include ./items
+    include ./items
 
 script.
   party = !{JSON.stringify(party)}

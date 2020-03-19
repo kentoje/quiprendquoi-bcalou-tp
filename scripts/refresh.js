@@ -37,23 +37,24 @@ if (location.pathname.match(/party/)) {
           items.forEach((item, index) => {
           const newItem = `
             <li>
-              <span>${item.name}</span>
-              <br>
-              <span>${item.user}</span>
-              <form method="post" action="/${route}/${id}/items/${item._id}?_method=DELETE">
+              <div class="items__info">
+                <span>${item.name}</span>
+                <span>${item.user}</span>
+              </div>
+              <form method="post" action="/${route}/${id}/items/${item._id}?_method=DELETE" class="items__remove">
                   <button type="submit">Supprimer cet item</button>
               </form>
-              <form method="post" action="/${route}/${id}/items/${item._id}?_method=PATCH">
-                  <label for="name-${index}">Nom de l'item</label>
-                  <br>
-                  <input name="name" id="name-${index}" type="text" minlength="3" placeholder="${item.name}">
-                  <br>
-                  <label for="user-${index}">Nom de l'auteur</label>
-                  <br>
-                  <input name="user" id="user-${index}" type="text" minlength="3" placeholder="${item.user}">
-                  <br>
+              <form method="post" action="/${route}/${id}/items/${item._id}?_method=PATCH" class="items__edit">
+                  <div>
+                    <label for="name-${index}">Nom de l'item</label>
+                    <input name="name" id="name-${index}" type="text" minlength="3" placeholder="${item.name}">
+                  </div>
+                  <div>
+                    <label for="user-${index}">Nom de l'auteur</label>
+                    <input name="user" id="user-${index}" type="text" minlength="3" placeholder="${item.user}">
+                  </div>
                   <button type="submit">Modifier l'item</button>
-                  </form>
+                </form>
             </li>
           `;
           itemEl.innerHTML += newItem;

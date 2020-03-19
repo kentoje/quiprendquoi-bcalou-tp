@@ -1,18 +1,16 @@
 ul.items
     each item, index in party.items
         li
-            span= item.name
-            br
-            span= item.user
-            form(method="post" action=`/party/${party._id}/items/${item._id}?_method=DELETE`)
+            div.items__info
+                span= item.name
+                span= item.user
+            form(method="post" action=`/party/${party._id}/items/${item._id}?_method=DELETE` class="items__remove")
                 button(type="submit") Supprimer cet item
-            form(method="post" action=`/party/${party._id}/items/${item._id}?_method=PATCH`)
-                label(for="name-" + index) Nom de l'item
-                br
-                input(name="name" id="name-" + index type="text" minlength="3" placeholder="Carotte")
-                br
-                label(for="user-" + index) Nom de l'auteur
-                br
-                input(name="user" id="user-" + index type="text" minlength="3" placeholder="John Doe")
-                br
+            form(method="post" action=`/party/${party._id}/items/${item._id}?_method=PATCH` class="items__edit")
+                div
+                    label(for="name-" + index) Nom de l'item
+                    input(name="name" id="name-" + index type="text" minlength="3" placeholder="Carotte")
+                div
+                    label(for="user-" + index) Nom de l'auteur
+                    input(name="user" id="user-" + index type="text" minlength="3" placeholder="John Doe")
                 button(type="submit") Modifier l'item
