@@ -1,3 +1,21 @@
+/**
+ * Ask user for permission.
+ */
+const askForPermission = _ => {
+  Notification.requestPermission()
+    .then(permission => permission)
+    .catch(error => console.warn(error.message));
+};
+
+/**
+ * Create a notification.
+ * @param {String} title - Title displayed on notification.
+ * @param {String} body - Text displayed on notification.
+ */
+const createNotification = (title, body) => (
+  new Notification(title, { body })
+);
+
 if (location.pathname.match(/party/)) {
   const { pathname } = location;
   const api = 'http://bastiencalou.fr:3000';
@@ -5,7 +23,7 @@ if (location.pathname.match(/party/)) {
   const id = pathname.match(/([^/]*)$/)[0];
   const time = 10000;
   const itemEl = document.querySelector('.items');
-  const itemCount = document.querySelectorAll('.items li').length;
+  let itemCount = document.querySelectorAll('.items li').length;
 
   setInterval(_ => {
     fetch(`${api}/${route}/${id}`)
@@ -40,7 +58,13 @@ if (location.pathname.match(/party/)) {
           `;
           itemEl.innerHTML += newItem;
           });
+          const title = 'Nouvelle(s) notification(s) !';
+          const bodyText = 'De nouvelles notifications sont arrivées !';
+          itemCount = document.querySelectorAll('.items li').length;
+          createNotification(title, bodyText);
         }
       });
   }, time);
+
+  ('Notification' in window) ? askForPermission() : console.warn('Notifications not supported...');
 }
