@@ -41,10 +41,9 @@ body {
       }
 
       input {
-        height: 32px;
-        padding: 0 8px;
-        font-size: 14px;
-        border: none;
+        height: 100%;
+        padding: 8px 16px;
+        @include input-style;
       }
     }
 
@@ -52,13 +51,7 @@ body {
       width: 100%;
       margin-top: 16px;
       padding: 6px 0;
-      background-color: #339067;
-      color: #fff;
-      font-size: 14px;
-      border-radius: 200px;
-      border: 1px solid #33a57c;
-      outline: none;
-      cursor: pointer;
+      @include button-style;
       transition: transform .2s ease-in-out;
 
       &:hover {

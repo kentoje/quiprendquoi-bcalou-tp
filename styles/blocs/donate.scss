@@ -12,12 +12,6 @@
     right: 16px;
     margin: 6px 0;
     padding: 6px 12px;
-    background-color: #339067;
-    color: #fff;
-    font-size: 14px;
-    border-radius: 200px;
-    border: 1px solid #33a57c;
-    outline: none;
-    cursor: pointer;
+    @include button-style;
   }
 }
