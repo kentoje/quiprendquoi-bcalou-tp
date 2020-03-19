@@ -12,6 +12,10 @@
     align-items: center;
     margin-top: 32px;
 
+    @media (max-width: 568px) {
+      margin-top: 64px;
+    }
+
     * {
       margin: 3px 0;
     }
