@@ -18,7 +18,7 @@ div.result
 
     form(method="post" action=`/party/${party._id}?_method=DELETE` class="result__delete")
         span Supprimer l'évènement
-        button(type="submit") Supprimer cet évènement
+        button(type="submit") Supprimer cet évènement 🗑
     form(method="post" action=`/party/${party._id}?_method=PATCH` class="result__edit")
         div
             label(for="name") Modifier le nom de l'évènement
@@ -29,7 +29,7 @@ div.result
         div
             label(for="date") Modifier la date de l'évènement
             input(name="date" id="date" type="date" value=`${party.date.slice(0, 10)}`)
-        button(type="submit") Modifier l'évènement
+        button(type="submit") Modifier l'évènement 🔧
 
     form(method="post" action=`/party/${party._id}/items` class="result__items")
         div
@@ -38,7 +38,7 @@ div.result
         div
             label(for="user") Nom de l'auteur
             input(name="user" id="user" type="text" required minlength="3" placeholder="John Doe")
-        button(type="submit") Ajouter
+        button(type="submit") Ajouter 😎
 
     include ./items
 
