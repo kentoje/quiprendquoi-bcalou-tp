@@ -7,4 +7,9 @@
   outline: none;
   cursor: pointer;
   text-align: center;
+
+  &.disabled {
+    opacity: .6;
+    pointer-events: none;
+  }
 }

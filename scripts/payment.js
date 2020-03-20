@@ -21,8 +21,20 @@ const createPayment = (paymentMethods, paymentDetails, options) => (
 const triggerPayment = (element, paymentRequest) => {
   element.addEventListener('click', _ => {
     paymentRequest.show()
-      .then(paymentResponse => paymentResponse.complete('success'))
-      .catch(error => console.error(error.message));
+      .then(paymentResponse => {
+        paymentResponse.complete('success')
+          .then(_ => {
+            element.innerHTML = 'Merci !';
+            element.setAttribute('disabled', 'disabled');
+            element.classList.add('disabled');
+          });
+      })
+      .catch(error => {
+        console.error(error.message);
+        element.setAttribute('disabled', 'disabled');
+        element.classList.add('disabled');
+        element.innerHTML = `Revenez avec plus d'argent !`;
+      });
   })
 }
 
@@ -30,7 +42,7 @@ if (window.PaymentRequest) {
   const paymentEl = document.querySelector('.donate');
   const button = document.createElement('button');
   button.setAttribute('type', 'submit');
-  button.innerHTML = 'Donate 4.99€ 🍵!';
+  button.innerHTML = 'Donner 4.99€ 🍵!';
   button.classList.add('donate__button');
   paymentEl.append(button);
 
