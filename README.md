@@ -4,14 +4,22 @@
 
 _À modifier si votre travail le nécessite_
 
+Clonez le repertoire :
 `git clone https://github.com/kentoje/quiprendquoi-bcalou-tp.git`
 
+Allez dans le dossier du projet :
 `cd quiprendquoi-bcalou-tp`
 
-RUN le script pour installer les dépendances :
-
+```RUN``` le script pour installer les dépendances :
 `./install.sh`
 
+```RUN``` la compilation des fichiers ```public``` :
+`npm run rebuild`
+
+Quittez le processus du rebuild en faisant un :
+`CTRL-C`
+
+Lancez le projet :
 `npm run start`
 
 ## Améliorations apportées

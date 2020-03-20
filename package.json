@@ -7,7 +7,9 @@
     "start": "concurrently --kill-others \"npm run sass\" \"nodemon app.js\" \"npm run watchify\" \"npm run sw\"",
     "sass": "node-sass styles/style.scss public/style.css -w --output-style compressed",
     "watchify": "watchify scripts/*.js -o public/script.js -t [ babelify --presets [ @babel/preset-env ] ]",
-    "sw": "watchify sw.js -o public/sw.js -t [ babelify --presets [ babel-preset-minify ] ]"
+    "sw": "watchify sw.js -o public/sw.js -t [ babelify --presets [ babel-preset-minify ] ]",
+    "build-css": "node-sass styles/style.scss -o public --output-style compressed",
+    "rebuild": "concurrently \"npm run build-css\" \"npm run watchify\" \"npm run sw\""
   },
   "keywords": [],
   "author": "",
