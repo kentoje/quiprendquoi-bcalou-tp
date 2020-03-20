@@ -3,22 +3,32 @@
 ## Installation
 
 Clonez le repertoire :
-`git clone https://github.com/kentoje/quiprendquoi-bcalou-tp.git`
+```shell
+git clone https://github.com/kentoje/quiprendquoi-bcalou-tp.git
+```
 
 Allez dans le dossier du projet :
-`cd quiprendquoi-bcalou-tp`
+```shell
+cd quiprendquoi-bcalou-tp
+```
 
 ```RUN``` le script pour installer les dépendances :
-`./install.sh`
+```shell
+./install.sh
+```
 
 ```RUN``` la compilation des fichiers ```public``` :
-`npm run rebuild`
+```shell
+npm run rebuild
+```
 
 Quittez le processus du rebuild en faisant un :
 `CTRL-C`
 
 Lancez le projet :
-`npm run start`
+```shell
+npm run start
+```
 
 Allez à l'adresse :
 `http://localhost:3000`
@@ -48,6 +58,8 @@ Allez à l'adresse :
 
 ### Audit à l'épreuve des balles :
 À tester sur un navigateur en mode incognito.
+
+[Screenshot](https://imgur.com/a/P4XzseZ)
 
 
 ## Article personnel
