@@ -6,6 +6,22 @@
   font-size: 21px;
   font-family: 'Helvetica Neue', sans-serif;
 
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    background-color: #2f2c30;
+    border-radius: 8px;
+
+    @media (max-width: 349px) {
+      border-radius: initial;
+    }
+
+    @media (max-width: 505px) {
+      margin: 0 16px;
+    }
+  }
+
   &__event {
     display: flex;
     flex-direction: column;
@@ -43,6 +59,9 @@
   }
 
   &__delete {
+    display: flex;
+    justify-content: space-between;
+
     span {
       margin-right: 8px;
       font-size: 18px;
@@ -59,7 +78,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 16px;
+    margin: 16px 0;
 
     div {
       display: flex;
@@ -83,6 +102,33 @@
     button {
       margin: 0 4px;
       padding: 6px 12px;
+      @include button-style;
+    }
+  }
+
+  &__edit {
+    div:nth-child(3) {
+      @media (max-width: 505px) {
+        display: flex;
+        flex-direction: column;
+        margin: 16px 0;
+      }
+    }
+  }
+
+  &__back {
+    display: flex;
+    justify-content: space-between;
+    margin: 16px 0;
+
+    span {
+      margin-right: 8px;
+      font-size: 18px;
+    }
+
+    a {
+      padding: 6px 12px;
+      text-decoration: none;
       @include button-style;
     }
   }
